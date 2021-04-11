@@ -37,10 +37,17 @@ else
 
 @code {
     private WeatherForecast[] forecasts;
+    private List<Contract> ContractList = new List<Contract>();
 
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        
+        ContractList.Add(new Contract(1, "Shunefng", "Zhang"));
+        ContractList.Add(new Contract(2, "Shunefng", "Zhang"));
+        ContractList.Add(new Contract(3, "Shunefng", "Zhang"));
+        ContractList.Add(new Contract(4, "Shunefng", "Zhang"));
+        ContractList.Add(new Contract(5, "Shunefng", "Zhang"));
     }
 
 }
