@@ -2,38 +2,15 @@
 @using BlazingChat.Shared
 @inject HttpClient Http
 
-<h1>Weather forecast</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<div class="col-12">
+    @foreach (var item in ContractList)
+    {
+        <a class="list-group-item list-group-item-action flex-column align-items-start">
+            @item.Vorname <span> </span>@item.Nachname
+        </a>
+        
+    }
+</div>
 
 @code {
     private WeatherForecast[] forecasts;
@@ -43,11 +20,11 @@ else
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
         
-        ContractList.Add(new Contract(1, "Shunefng", "Zhang"));
-        ContractList.Add(new Contract(2, "Shunefng", "Zhang"));
-        ContractList.Add(new Contract(3, "Shunefng", "Zhang"));
-        ContractList.Add(new Contract(4, "Shunefng", "Zhang"));
-        ContractList.Add(new Contract(5, "Shunefng", "Zhang"));
+        ContractList.Add(new Contract(1, "San", "Zhang"));
+        ContractList.Add(new Contract(2, "Si", "Li"));
+        ContractList.Add(new Contract(3, "Peter", "Ol"));
+        ContractList.Add(new Contract(4, "Ewa", "Ka"));
+        ContractList.Add(new Contract(5, "Andre", "G"));
     }
 
 }
