@@ -1,11 +1,12 @@
 ﻿@page "/contracts"
 @using BlazingChat.Shared
 @inject HttpClient Http
+@inject NavigationManager NavigationManager
 
 <div class="col-12">
     @foreach (var item in ContractList)
     {
-        <a class="list-group-item list-group-item-action flex-column align-items-start">
+        <a @onclick="NavigateToChat" class="list-group-item list-group-item-action flex-column align-items-start">
             @item.Vorname <span> </span>@item.Nachname
         </a>
         
@@ -13,18 +14,22 @@
 </div>
 
 @code {
-    private WeatherForecast[] forecasts;
     private List<Contract> ContractList = new List<Contract>();
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        //forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
         
         ContractList.Add(new Contract(1, "San", "Zhang"));
         ContractList.Add(new Contract(2, "Si", "Li"));
         ContractList.Add(new Contract(3, "Peter", "Ol"));
         ContractList.Add(new Contract(4, "Ewa", "Ka"));
         ContractList.Add(new Contract(5, "Andre", "G"));
+    }
+
+    private void NavigateToChat(){
+        NavigationManager.NavigateTo("/chat");
+
     }
 
 }
