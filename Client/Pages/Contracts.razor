@@ -4,27 +4,27 @@
 @inject NavigationManager NavigationManager
 
 <div class="col-12">
-    @foreach (var item in ContractList)
+    @foreach (var contract in ContractList)
     {
-        <a @onclick="NavigateToChat" class="list-group-item list-group-item-action flex-column align-items-start">
-            @item.Vorname <span> </span>@item.Nachname
+        <a href="/chat/@contract.ContactId" class="list-group-item list-group-item-action flex-column align-items-start">
+            @contract.FirstName <span> </span>@contract.LastName
         </a>
         
     }
 </div>
 
 @code {
-    private List<Contract> ContractList = new List<Contract>();
+    private List<Contact> ContractList = new List<Contact>();
 
     protected override async Task OnInitializedAsync()
     {
         //forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
         
-        ContractList.Add(new Contract(1, "San", "Zhang"));
-        ContractList.Add(new Contract(2, "Si", "Li"));
-        ContractList.Add(new Contract(3, "Peter", "Ol"));
-        ContractList.Add(new Contract(4, "Ewa", "Ka"));
-        ContractList.Add(new Contract(5, "Andre", "G"));
+        ContractList.Add(new Contact(1, "San", "Zhang"));
+        ContractList.Add(new Contact(2, "Si", "Li"));
+        ContractList.Add(new Contact(3, "Peter", "Ol"));
+        ContractList.Add(new Contact(4, "Ewa", "Ka"));
+        ContractList.Add(new Contact(5, "Andre", "G"));
     }
 
     private void NavigateToChat(){
