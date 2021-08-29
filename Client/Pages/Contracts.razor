@@ -18,13 +18,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        //forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
-        
-        ContractList.Add(new Contact(1, "San", "Zhang"));
-        ContractList.Add(new Contact(2, "Si", "Li"));
-        ContractList.Add(new Contact(3, "Peter", "Ol"));
-        ContractList.Add(new Contact(4, "Ewa", "Ka"));
-        ContractList.Add(new Contact(5, "Andre", "G"));
+        ContractList = await Http.GetFromJsonAsync<List<Contact>>("user");      
     }
 
     private void NavigateToChat(){

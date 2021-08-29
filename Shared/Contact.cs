@@ -20,5 +20,12 @@ namespace BlazingChat.Shared
             this.FirstName = firstName;
             this.LastName = lastName;
         }
+
+        
+        public Contact(string firstName, string lastName)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
     }
 }
