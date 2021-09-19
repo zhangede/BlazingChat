@@ -8,9 +8,24 @@
 
 @code {
     private int currentCount = 0;
+    
+    [CascadingParameter]
+    public Error Error {get; set;}
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    protected override async Task OnInitializedAsync(){
+
+        try
+        {
+             throw new NullReferenceException();
+        }
+        catch (System.Exception ex)
+        {
+            Error.ProcessError(ex);
+        }
     }
 }
