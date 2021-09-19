@@ -2,15 +2,35 @@
 
 @inject IToastService _toastService
 
-<h1>Hello, world!</h1>
+<div class="col-12">
+    <input type="text" class="form-control" placeholder="First name">
+    <br />
+    <input type="text" class="form-control" placeholder="Last name">
+    <br />
+    <input type="text" class="form-control" placeholder="First name">
+    <br>
+    <button class="btn btn-primary" @onclick="UpdateProfile">Update Profile</button>
+    <button class="btn btn-primary" @onclick="GetProfile">Get Profile</button>
+    <br>
+    @Message
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+</div>
 
 @code {
+
+    private string Message { get; set; }
+
+    private void UpdateProfile() { 
+        Message = "Profile updated";
+    }
+
+    private void GetProfile() { 
+        Message = "Profile Got";
+    }
+
     protected override async Task OnInitializedAsync()
     {
-        _toastService.ShowSuccess("OK");
+        //_toastService.ShowSuccess("OK");
     }
 }
