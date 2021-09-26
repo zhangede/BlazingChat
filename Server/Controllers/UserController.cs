@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BlazingChat.Shared;
 using BlazingChat.Server.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazingChat.Server.Controllers
 {
@@ -29,10 +30,17 @@ namespace BlazingChat.Server.Controllers
             _context = context;
         }
 
+        [HttpGet("getprofile/{userId}")]
+        public async Task<User> GetProfile(int userId){
+            return await _context.Users.Where(u=>u.UserId == userId).FirstOrDefaultAsync();
+        }
+
         [HttpGet]
         public List<Contact> Get()
         {
             var users = _context.Users.ToList();
+
+
 
             List<Contact> contacts = new List<Contact>();
 
